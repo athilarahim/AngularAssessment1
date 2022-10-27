@@ -1,0 +1,20 @@
+<table class="table">
+    <caption>Student Table</caption>
+    <tr>
+        <th>Admission number</th>
+        <th>Student Name</th>
+        <th>Department</th>
+    </tr>
+    <tr *ngFor="let student of studentArray;">
+        <td appHover (dblClick)="onDoubleClick()">{{student.admno}}</td>
+        <td appHover (dblClick)="onDoubleClick()">{{student.name}}</td>
+        <td appHover (dblClick)="onDoubleClick()">{{student.dept}}</td>
+    </tr>
+
+</table>
+<style>
+    table, th, td {
+  border: 1px ridge brown;
+
+}
+</style>
