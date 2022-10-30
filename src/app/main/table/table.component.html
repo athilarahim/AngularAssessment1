@@ -5,10 +5,45 @@
         <th>Student Name</th>
         <th>Department</th>
     </tr>
-    <tr *ngFor="let student of studentArray;">
-        <td appHover (dblClick)="onDoubleClick()">{{student.admno}}</td>
-        <td appHover (dblClick)="onDoubleClick()">{{student.name}}</td>
-        <td appHover (dblClick)="onDoubleClick()">{{student.dept}}</td>
+    <tr *ngFor="let student of studentArray;let i index">
+
+        <td appHover (dblclick)="onDoubleClick(('displayId' + i.admno),('hiddenId' + i.admno))" >
+            
+            <div [class]="'displayClass' + i.admno" [id]="'displayId' + i.admno">{{student.admno}}</div>
+
+            <div  hidden [class]="'hideClass' + i.admno" [id]="'hiddenId' + i.admno">
+
+                <input type="text"  [id]="'inputId' + i.admno" >
+
+                <button   type="button" id="btn" (click)="EditValue(('inputId' + i.admno),('displayId' + i.admno),('hiddenId' + i.admno))">Save</button>
+        </div>
+        </td>
+
+        <td appHover (dblclick)="onDoubleClick(('displayId' + i.name),('hiddenId' + i.name))" >
+
+            <div [class]="'displayClass' + i.admno" [id]="'displayId' + i.name">    {{student.name}}    </div>
+
+            <div hidden  [class]="'hideClass' + i.admno" [id]="'hiddenId' + i.name">
+
+                <input type="text"  [id]="'inputId' + i.name" >
+
+                <button   type="button" id="btn" (click)="EditValue(('inputId' + i.name),('displayId' + i.name),('hiddenId' + i.name))">Save</button>
+
+        </div>
+        </td>
+
+        <td appHover (dblclick)="onDoubleClick(('displayId' + i.dept+i.admno),('hiddenId' + i.dept+i.admno))" >
+
+            <div [class]="'displayClass' + i.admno" [id]="'displayId' + i.dept+i.admno"> {{student.dept}}</div>
+
+            <div hidden  [class]="'hideClass' + i.admno" [id]="'hiddenId' + i.dept+i.admno">
+
+                <input type="text"  [id]="'inputId' + i.dept+i.admno" >
+
+                <button   type="button" id="btn" (click)="EditValue(('inputId' + i.dept+i.admno),('displayId' + i.dept+i.admno),('hiddenId' + i.dept+i.admno))">Save</button>
+
+        </div>
+        </td>
     </tr>
 
 </table>
