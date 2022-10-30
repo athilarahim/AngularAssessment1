@@ -1,50 +1,54 @@
 <table class="table">
     <caption>Student Table</caption>
+    <thead> 
     <tr>
         <th>Admission number</th>
         <th>Student Name</th>
         <th>Department</th>
     </tr>
-    <tr *ngFor="let student of studentArray;let i index">
+    </thead>
+    <tbody *ngFor="let student of studentArray;let i index"> 
+    <tr >
 
-        <td appHover (dblclick)="onDoubleClick(('displayId' + i.admno),('hiddenId' + i.admno))" >
+        <td appHover  (dblclick)="student.show=!student.show">
             
-            <div [class]="'displayClass' + i.admno" [id]="'displayId' + i.admno">{{student.admno}}</div>
+            <div [class]="'displayClass' + i.admno" [hidden]="student.show">{{student.admno}}</div>
 
-            <div  hidden [class]="'hideClass' + i.admno" [id]="'hiddenId' + i.admno">
+            <div [class]="'hideClass' + i.admno" [hidden]="!student.show">
 
-                <input type="text"  [id]="'inputId' + i.admno" >
+                <input type="text" #val1>
 
-                <button   type="button" id="btn" (click)="EditValue(('inputId' + i.admno),('displayId' + i.admno),('hiddenId' + i.admno))">Save</button>
+                <button   type="button" id="btn" (click)="EditValue(ad,val1.value,i)">Save</button>
         </div>
         </td>
 
-        <td appHover (dblclick)="onDoubleClick(('displayId' + i.name),('hiddenId' + i.name))" >
+        <td appHover (dblclick)="student.show=!student.show">
 
-            <div [class]="'displayClass' + i.admno" [id]="'displayId' + i.name">    {{student.name}}    </div>
+            <div [class]="'displayClass' + i.admno" [hidden]="student.show">{{student.name}}</div>
 
-            <div hidden  [class]="'hideClass' + i.admno" [id]="'hiddenId' + i.name">
+            <div hidden  [class]="'hideClass' + i.admno" [hidden]="!student.show">
 
-                <input type="text"  [id]="'inputId' + i.name" >
+                <input type="text" #val2>
 
-                <button   type="button" id="btn" (click)="EditValue(('inputId' + i.name),('displayId' + i.name),('hiddenId' + i.name))">Save</button>
+                <button   type="button" id="btn" (click)="EditValue(nm,val2.value,i)">Save</button>
 
         </div>
         </td>
 
-        <td appHover (dblclick)="onDoubleClick(('displayId' + i.dept+i.admno),('hiddenId' + i.dept+i.admno))" >
+        <td appHover (dblclick)="student.show=!student.show">
 
-            <div [class]="'displayClass' + i.admno" [id]="'displayId' + i.dept+i.admno"> {{student.dept}}</div>
+            <div [class]="'displayClass' + i.admno" [hidden]="student.show">{{student.dept}}</div>
 
-            <div hidden  [class]="'hideClass' + i.admno" [id]="'hiddenId' + i.dept+i.admno">
+            <div hidden  [class]="'hideClass' + i.admno" [hidden]="!student.show">
 
-                <input type="text"  [id]="'inputId' + i.dept+i.admno" >
+                <input type="text" #val3>
 
-                <button   type="button" id="btn" (click)="EditValue(('inputId' + i.dept+i.admno),('displayId' + i.dept+i.admno),('hiddenId' + i.dept+i.admno))">Save</button>
+                <button   type="button" id="btn" (click)="EditValue(dp,val3.value,i)">Save</button>
 
         </div>
         </td>
     </tr>
+    </tbody>
 
 </table>
 <style>
