@@ -10,40 +10,50 @@
     <tbody *ngFor="let student of studentArray;let i index"> 
     <tr >
 
-        <td appHover  (dblclick)="student.show=!student.show">
-            
-            <div [class]="'displayClass' + i.admno" [hidden]="student.show">{{student.admno}}</div>
+        <td appHover  (dblclick)="student.show='admno'">
+            <div *ngIf="student.show!='admno' "> 
+            <div [class]="'displayClass' + i.admno">{{student.admno}}</div>
+            </div>
 
-            <div [class]="'hideClass' + i.admno" [hidden]="!student.show">
+            <div *ngIf="student.show=='admno'">
+            <div [class]="'hideClass' + i.admno">
 
-                <input type="text" #val1>
+                <input type="text" value="{{student.admno}}" #val1>
 
                 <button   type="button" id="btn" (click)="EditValue(ad,val1.value,i)">Save</button>
         </div>
-        </td>
-
-        <td appHover (dblclick)="student.show=!student.show">
-
-            <div [class]="'displayClass' + i.admno" [hidden]="student.show">{{student.name}}</div>
-
-            <div hidden  [class]="'hideClass' + i.admno" [hidden]="!student.show">
-
-                <input type="text" #val2>
-
-                <button   type="button" id="btn" (click)="EditValue(nm,val2.value,i)">Save</button>
-
         </div>
         </td>
 
-        <td appHover (dblclick)="student.show=!student.show">
+        <td appHover (dblclick)=" student.show='name'">
+            <div *ngIf="student.show!='name' ">
+            <div [class]="'displayClass' + i.admno">{{student.name}}</div>
+            </div>
+            <div *ngIf="student.show=='name'">
+            <div  [class]="'hideClass' + i.admno">
 
-            <div [class]="'displayClass' + i.admno" [hidden]="student.show">{{student.dept}}</div>
+                <input type="text" value="{{student.name}}" #val2>
 
-            <div hidden  [class]="'hideClass' + i.admno" [hidden]="!student.show">
+                <button   type="button" id="btn" (click)="EditValue(nm,val2.value,i)">Save</button>
+                </div>
 
-                <input type="text" #val3>
+        </div>
+
+        </td>
+
+        <td appHover (dblclick)="student.show='dept'">
+            <div *ngIf="student.show!='dept' "> 
+
+            <div [class]="'displayClass' + i.admno">{{student.dept}}</div>
+            </div>
+            <div *ngIf="student.show=='dept'"> 
+
+            <div  [class]="'hideClass' + i.admno">
+
+                <input type="text" value="{{student.dept}}" #val3>
 
                 <button   type="button" id="btn" (click)="EditValue(dp,val3.value,i)">Save</button>
+                </div>
 
         </div>
         </td>
